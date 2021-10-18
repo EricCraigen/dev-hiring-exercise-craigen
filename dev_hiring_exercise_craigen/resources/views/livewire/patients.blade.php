@@ -1,3 +1,4 @@
 <div>
-    Patients datatable will go here
+    {{-- {!! $patients !!} --}}
+
 </div>
