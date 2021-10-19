@@ -2,20 +2,86 @@
 
 namespace App\Http\Livewire;
 
+use Carbon\Carbon;
 use App\Models\Patient;
 use Livewire\Component;
 use App\Http\Livewire\Modal;
-use Illuminate\Support\Facades\Log;
 
 class CreatePatientModal extends Modal
 {
     public $new_patient;
     public $state_abbrevs_names;
+    protected $rules;
 
-    // public function updated($propertyName)
-    // {
-    //     $this->validateOnly($propertyName);
-    // }
+    protected $messages =
+    [
+        'new_patient.first_name.required' => 'First Name field is required.',
+        'new_patient.first_name.min' => 'First Name field must contain more than 2 characters.',
+        'new_patient.first_name.max' => 'First Name field cannot contain more than 50 characters.',
+        'new_patient.middle_name.min' => 'Middle Name field must contain more than 2 characters.',
+        'new_patient.middle_name.max' => 'Middle Name field cannot contain more than 50 characters.',
+        'new_patient.last_name.required' => 'Last Name field is required.',
+        'new_patient.last_name.min' => 'Last Name field must contain more than 2 characters.',
+        'new_patient.last_name.max' => 'Last Name field cannot contain more than 50 characters.',
+        'new_patient.date_of_birth.required' => 'A Date of Birth is required.',
+        'new_patient.date_of_birth.date' => 'Please select a valid Date of Birth.',
+        'new_patient.date_of_birth.date' => 'Please select a valid Date of Birth (YYYY-MM-DD).',
+        'new_patient.date_of_birth.before' => 'A Date of Birth must be before today.',
+        'new_patient.gender.required' => 'Gender field is required.',
+        'new_patient.status.required' => 'Status field is required.',
+        'new_patient.marital_status.required' => 'Marital Status field is required.',
+        'new_patient.soc_sec_no.required' => 'Social Sec No field is required.',
+        'new_patient.soc_sec_no.regex' => 'Please enter a valid Social Sec No.',
+        'new_patient.employment_status.required' => 'Empolyment Status field is required.',
+        'new_patient.referred_by.required' => 'Referred By field is required.',
+        'new_patient.referred_by.min' => 'Referred By field must contain more than 2 characters.',
+        'new_patient.referred_by.max' => 'Referred By field cannot contain more than 255 characters.',
+        'new_patient.race.required' => 'Race field is required.',
+        'new_patient.language.required' => 'Laguange field is required.',
+        'new_patient.contact_by.required' => 'Contact By field is required.',
+        'new_patient.email.required' => 'Email field is required.',
+        // 'new_patient.email.unique' => 'Email has already been.',
+        'new_patient.primary_phone.required' => 'Primary Phone field is required.',
+        'new_patient.primary_phone.regex' => 'Please enter a valid phone number.',
+        'new_patient.street_address_1.required' => 'Street Address 1 field is required.',
+        'new_patient.street_address_1.min' => 'Street Address 1 field must contain more than 2 characters.',
+        'new_patient.street_address_1.max' => 'Street Address 1 field cannot contain more than 255 characters.',
+        'new_patient.city.required' => 'City field is required.',
+        'new_patient.city.min' => 'City field must contain more than 2 characters.',
+        'new_patient.city.max' => 'City field cannot contain more than 255 characters.',
+        'new_patient.state.required' => 'State field is required.',
+        'new_patient.postal_code.required' => 'Postal Code field is required.',
+    ];
+
+    protected function rules()
+    {
+        return [
+            'new_patient.first_name' => 'required|min:2|max:50',
+            'new_patient.middle_name' => 'min:2|max:50',
+            'new_patient.last_name' => 'required|min:2|max:50',
+            'new_patient.date_of_birth' => 'required|date|date_format:Y-m-d|before:'. Carbon::now()->format('Y-m-d'),
+            'new_patient.gender' => 'required',
+            'new_patient.status' => 'required',
+            'new_patient.marital_status' => 'required',
+            'new_patient.soc_sec_no' => ['required', 'regex:/^(\d{3}-?\d{2}-?\d{4}|XXX-XX-XXXX)$/'],
+            'new_patient.employment_status' => 'required',
+            'new_patient.referred_by' => 'required|min:2|max:255',
+            'new_patient.race' => 'required',
+            'new_patient.language' => 'required',
+            'new_patient.contact_by' => 'required',
+            'new_patient.email' => 'required',
+            'new_patient.primary_phone' => ['required', 'regex:/^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/'],
+            'new_patient.street_address_1' => 'required|min:2|max:255',
+            'new_patient.city' => 'required|min:2|max:255',
+            'new_patient.state' => 'required',
+            'new_patient.postal_code' => 'required',
+        ];
+    }
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
 
     public function mount()
     {
@@ -23,18 +89,15 @@ class CreatePatientModal extends Modal
         $this->clear_state_abbrevs_names();
     }
 
-    // public function create_patient()
-    // {
-    //     sleep(1);
-    //     $this->show = false;
-    //     // Log::debug($this->email);
-    // }
-
     public function create_new_patient()
     {
-        sleep(1);
-        $this->show = false;
-        Patient::firstOrCreate($this->new_patient);
+        $validated_data = $this->validate();
+        if ($validated_data) {
+            Patient::firstOrCreate($this->new_patient);
+            sleep(1);
+            $this->show = false;
+        }
+
     }
 
     private function clear_new_patient()

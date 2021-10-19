@@ -11,12 +11,36 @@ class RecordBloodPressureModal extends Modal
 {
     public $current_patient;
     public $patient_blood_pressure;
+    protected $rules;
 
     protected $listeners = [
         'set_current_patient_for_blood_pressure_input',
         'show_modal' => 'show',
         'hide_modal' => 'hide'
     ];
+
+    protected $messages =
+    [
+        'patient_blood_pressure.bp_systolic.required' => 'Systolic field is required.',
+        'patient_blood_pressure.bp_systolic.numeric' => 'Systolic field must be a number greater than 0.',
+        'patient_blood_pressure.bp_systolic.min' => 'Systolic cannot be below 1.',
+        'patient_blood_pressure.bp_diastolic.required' => 'Diastolic field is required.',
+        'patient_blood_pressure.bp_diastolic.numeric' => 'Diastolic field must be a number greater than 0.',
+        'patient_blood_pressure.bp_diastolic.min' => 'Diastolic cannot be below 1.',
+    ];
+
+    protected function rules()
+    {
+        return [
+            'patient_blood_pressure.bp_systolic' => 'required|numeric|min:1',
+            'patient_blood_pressure.bp_diastolic' => 'required|numeric|min:1',
+        ];
+    }
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
 
     public function mount()
     {
@@ -25,11 +49,14 @@ class RecordBloodPressureModal extends Modal
 
     public function record_patient_blood_pressure()
     {
-        $this->current_patient = Patient::find($this->patient_blood_pressure['patient_id']);
-        BloodPressure::create($this->patient_blood_pressure);
-        sleep(1);
-        $this->emitSelf('hide_modal');
-        $this->emitTo('record-blood-pressure', 'update_most_recent_bp');
+        $validated_data = $this->validate();
+        if ($validated_data) {
+            $this->current_patient = Patient::find($this->patient_blood_pressure['patient_id']);
+            BloodPressure::create($this->patient_blood_pressure);
+            sleep(1);
+            $this->emitSelf('hide_modal');
+            $this->emitTo('record-blood-pressure', 'update_most_recent_bp');
+        }
     }
 
     public function clear_new_patient_blood_pressure()

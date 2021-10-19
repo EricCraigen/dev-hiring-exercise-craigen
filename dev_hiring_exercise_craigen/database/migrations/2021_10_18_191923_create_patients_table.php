@@ -21,10 +21,10 @@ class CreatePatientsTable extends Migration
             $table->date('date_of_birth');
             $table->string('gender');
             $table->boolean('status');
-            $table->string('marital_status')->nullable();
-            $table->string('race')->nullable();
-            $table->string('language')->nullable();
-            $table->string('employment_status')->nullable();
+            $table->string('marital_status');
+            $table->string('race');
+            $table->string('language');
+            $table->string('employment_status');
             $table->string('contact_by');
             $table->string('soc_sec_no');
             $table->string('referred_by');
