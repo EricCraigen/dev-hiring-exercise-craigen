@@ -26,6 +26,7 @@
         @yield('body')
 
         <livewire:create-patient-modal />
+        <livewire:record-blood-pressure-modal />
         @livewireScripts
     </body>
 </html>

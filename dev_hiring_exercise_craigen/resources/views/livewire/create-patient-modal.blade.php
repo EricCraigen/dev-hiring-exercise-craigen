@@ -1,11 +1,16 @@
 <div>
 
     <x-modal wire:model="show">
-        <div>
+
+        <div class="py-5 bg-indigo-400 rounded-2xl">
+
+            <h1 class="w-full text-xl xl:text-3xl text-gray-900 font-bold capitalize mt-5 p-5">
+                Create a new patient record
+            </h1>
 
             <form wire:submit.prevent="create_new_patient"
               method="post"
-              class="flex flex-col w-full gap-5 py-5 bg-red-500 rounded-2xl">
+              class="flex flex-col w-full gap-5">
 
             <h4 class="w-full text-md md:text-xl text-gray-900 font-bold capitalize px-10">
                 Personal Information
@@ -174,7 +179,7 @@
                     </select>
 
                     <x-input wire:model="new_patient.email"
-                            class="w-full px-5 py-3 border border-blue-700"
+                            class="w-full md:w-1/3 px-5 py-3 border border-blue-700"
                             type="email"
                             value="new_patient.email"
                             id="new_patient.email"
@@ -257,33 +262,31 @@
                                 id="new_patient.state"
                                 name="new_patient.state">
                                     <option value="">State</option>
-                                        @foreach ($state_abbrevs_names as $key => $state)
-                                            <option value="{{ $key }}">{{ $state }}</option>
-                                        @endforeach
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
+                                    @foreach ($state_abbrevs_names as $key => $state)
+                                        <option value="{{ $key }}">{{ $state }}</option>
+                                    @endforeach
                         </select>
 
                         <x-input wire:model="new_patient.postal_code"
-                                class="w-full px-5 py-3 border border-blue-700"
-                                type="text"
-                                value="new_patient.postal_code"
-                                id="new_patient.postal_code"
-                                name="new_patient.postal_code"
-                                placeholder="Postal Code"
+                                 class="w-full px-5 py-3 border border-blue-700"
+                                 type="text"
+                                 value="new_patient.postal_code"
+                                 id="new_patient.postal_code"
+                                 name="new_patient.postal_code"
+                                 placeholder="Postal Code"
                         >
                         </x-input>
 
-                    </div>
+                    </div> 
 
                 </div>
 
-            <x-button wire:click.prevent="create_new_patient"
-                      class="block mx-16 mb-5 bg-indigo-600 hover:bg-green-500 hover:bg-opacity-80 text-gray-900 hover:text-indigo-900 text-xl font-bold justify-center px-3 py-1">
-                Create Patient
-            </x-button>
+                <x-button wire:click.prevent="create_new_patient"
+                          class="block mx-16 mb-5 bg-gray-600 hover:bg-green-500 hover:bg-opacity-80 text-white hover:text-indigo-900 text-xl font-bold justify-center px-3 py-1">
+                    Create Patient
+                </x-button>
 
-        </form>
+            </form>
 
         </div>
 

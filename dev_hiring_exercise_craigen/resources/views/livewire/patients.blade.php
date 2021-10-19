@@ -1,8 +1,4 @@
 <div>
-    {!! $current_patient !!}
-    <h1 class="w-full text-xl xl:text-3xl text-gray-900 font-bold capitalize mt-5 px-5 sm:px-10 lg:px-20">
-        Create a new patient record
-    </h1>
 
     <div class="flex flex-col w-full px-10 lg:px-52 p-5 gap-5">
 
