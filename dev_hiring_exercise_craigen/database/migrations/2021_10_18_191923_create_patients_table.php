@@ -23,7 +23,7 @@ class CreatePatientsTable extends Migration
             $table->boolean('status');
             $table->string('marital_status');
             $table->string('race');
-            $table->string('language');
+            $table->string('language')->default('Italian');
             $table->string('employment_status');
             $table->string('contact_by');
             $table->string('soc_sec_no');
