@@ -1,5 +1,6 @@
 <div x-data="{show: @entangle($attributes->wire('model')).defer}"
     x-show="show"
+    x-cloak
     @keydown.escape.window="show = false"
     class="fixed z-10 inset-0 overflow-y-auto"
     aria-labelledby="modal-title"
