@@ -4,14 +4,9 @@
 
         <div class="flex flex-col py-5 bg-indigo-400 rounded-2xl gap-5">
 
-            {{-- <div class="flex w-1/2"> --}}
-
             <h1 class="w-1/2 text-xl xl:text-3xl text-gray-900 font-bold capitalize mt-5 p-5">
                 Record new patient blood pressure
             </h1>
-
-            {{-- </div> --}}
-
 
             <form wire:submit.prevent="record_patient_blood_pressure"
                   method="post"
@@ -53,7 +48,6 @@
                     </x-button>
 
                 </div>
-
 
                 <div class="flex w-2/3">
 

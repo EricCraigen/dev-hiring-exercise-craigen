@@ -141,8 +141,6 @@
 
                         {{-- @endforeach --}}
 
-
-
                     @endif
 
                 </div>

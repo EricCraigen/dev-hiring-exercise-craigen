@@ -17,10 +17,11 @@ class PatientDatatable extends LivewireDatatable
     {
         return [
             NumberColumn::name('id')
-                ->label('ID'),
+                ->defaultSort('asc')
+                ->label('ID')
+                ->searchable(),
 
             Column::name('first_name')
-                ->defaultSort('asc')
                 ->label('First')
                 ->searchable(),
 
@@ -36,8 +37,7 @@ class PatientDatatable extends LivewireDatatable
                 ->searchable(),
 
             Column::name('gender')
-                ->label('Gender')
-                ->filterable(),
+                ->label('Gender'),
 
             BooleanColumn::name('status')
                 ->label('status')

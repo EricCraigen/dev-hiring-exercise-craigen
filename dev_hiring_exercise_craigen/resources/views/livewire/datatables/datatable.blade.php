@@ -1,6 +1,6 @@
 <div class="my-10">
     @if($beforeTableSlot)
-        <div class="mt-8">
+        <div class="mt-8 w-full">
             @include($beforeTableSlot)
         </div>
     @endif

@@ -18,7 +18,7 @@ class PatientsTableSeeder extends Seeder
         $faker = Factory::create();
         $data = [];
 
-        for ($patient_ctr = 0; $patient_ctr < 5000; $patient_ctr++) {
+        for ($patient_ctr = 0; $patient_ctr < 50000; $patient_ctr++) {
             $data[] = [
                 'first_name' => $faker->firstName(),
                 'middle_name' => $faker->firstName(),
@@ -41,19 +41,21 @@ class PatientsTableSeeder extends Seeder
                 'postal_code' => $faker->postcode(),
                 'primary_phone' => $faker->phoneNumber(),
                 'secondary_phone' => $faker->phoneNumber(),
-                // 'created_at' => now()->toDateTimeString(),
-                // 'updated_at' => now()->toDateTimeString(),
+                'created_at' => now()->toDateTimeString(),
+                'updated_at' => now()->toDateTimeString(),
             ];
         }
 
-        foreach ($data as $patient) {
-            Patient::insert($patient);
-        }
-
-        // $chunks = array_chunk($data, 5000);
-
-        // foreach ($chunks as $chunk) {
-        //     Patient::insert($chunk);
+        // foreach ($data as $patient) {
+        //     Patient::insert($patient);
         // }
+
+        $chunks = array_chunk($data, 5000, true);
+
+        foreach ($chunks as $chunk) {
+            foreach ($chunk as $patient) {
+                Patient::insert($patient);
+            }
+        }
     }
 }

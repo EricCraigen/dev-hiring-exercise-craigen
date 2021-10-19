@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Carbon\Carbon;
 use App\Models\Patient;
+use App\Exports\PatientsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Patients extends Component
 {
@@ -20,6 +22,11 @@ class Patients extends Component
     // {
     //     $this->current_patient = Patient::find(1)->blood_pressure;
     // }
+
+    public function export()
+    {
+        return Excel::download(new PatientsExport, 'patients.csv');
+    }
 
     public function render()
     {
