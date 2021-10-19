@@ -25,6 +25,7 @@
     <body>
         @yield('body')
 
+        <livewire:create-patient-modal />
         @livewireScripts
     </body>
 </html>

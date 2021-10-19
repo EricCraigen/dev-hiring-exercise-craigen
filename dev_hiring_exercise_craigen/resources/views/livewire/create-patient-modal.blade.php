@@ -1,19 +1,11 @@
 <div>
-    {!! $current_patient !!}
-    <h1 class="w-full text-xl xl:text-3xl text-gray-900 font-bold capitalize mt-5 px-5 sm:px-10 lg:px-20">
-        Create a new patient record
-    </h1>
 
-    <div class="flex flex-col w-full px-10 lg:px-52 p-5 gap-5">
+    <x-modal wire:model="show">
+        <div>
 
-        <x-button wire:click.prevent="$emitTo('create-patient-modal', 'show_modal')" class="bg-indigo-900 hover:bg-green-700 hover:bg-opacity-80 text-green-500 hover:text-indigo-900 text-xl font-bold justify-center px-5 py-3 mt-5">
-            Create New Patient
-        </x-button>
-
-
-        {{-- <form wire:submit.prevent="create_new_patient"
+            <form wire:submit.prevent="create_new_patient"
               method="post"
-              class="flex flex-col w-full gap-5 py-5 bg-gray-500 rounded-2xl">
+              class="flex flex-col w-full gap-5 py-5 bg-red-500 rounded-2xl">
 
             <h4 class="w-full text-md md:text-xl text-gray-900 font-bold capitalize px-10">
                 Personal Information
@@ -291,11 +283,10 @@
                 Create Patient
             </x-button>
 
-        </form> --}}
+        </form>
 
-    </div>
+        </div>
 
-
-
+    </x-modal>
 
 </div>
