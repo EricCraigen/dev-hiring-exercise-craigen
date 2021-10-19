@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\BloodPressure;
 
 class Patient extends Model
 {
@@ -35,7 +36,7 @@ class Patient extends Model
 
     public function blood_pressure()
     {
-        return $this->hasOne('App\BloodPressure', 'patient_id');
+        return $this->hasMany(BloodPressure::class);
     }
 
 }

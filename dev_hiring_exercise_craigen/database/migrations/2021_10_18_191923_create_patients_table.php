@@ -21,21 +21,21 @@ class CreatePatientsTable extends Migration
             $table->date('date_of_birth');
             $table->string('gender');
             $table->boolean('status');
-            $table->string('marital_status');
-            $table->string('race');
-            $table->string('language');
-            $table->string('employment_status');
+            $table->string('marital_status')->nullable();
+            $table->string('race')->nullable();
+            $table->string('language')->nullable();
+            $table->string('employment_status')->nullable();
             $table->string('contact_by');
             $table->string('soc_sec_no');
             $table->string('referred_by');
             $table->string('email')->unique();
             $table->string('street_address_1');
-            $table->string('street_address_2');
+            $table->string('street_address_2')->nullable();
             $table->string('city');
             $table->string('state');
             $table->string('postal_code');
             $table->string('primary_phone');
-            $table->string('secondary_phone');
+            $table->string('secondary_phone')->nullable();
             $table->timestamps();
         });
     }

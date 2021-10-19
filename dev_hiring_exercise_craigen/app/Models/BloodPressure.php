@@ -11,11 +11,12 @@ class BloodPressure extends Model
 
     protected $fillable = [
         'patient_id',
-        'bp_stats',
+        'bp_systolic',
+        'bp_diastolic',
     ];
 
     public function patient()
     {
-        return $this->belongsTo('App\Patient', 'patient_id');
+        return $this->belongsTo(Patient::class);
     }
 }
