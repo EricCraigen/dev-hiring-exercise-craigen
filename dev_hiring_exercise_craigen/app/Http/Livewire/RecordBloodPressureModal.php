@@ -55,7 +55,7 @@ class RecordBloodPressureModal extends Modal
             BloodPressure::create($this->patient_blood_pressure);
             sleep(1);
             $this->emitSelf('hide_modal');
-            $this->emitTo('record-blood-pressure', 'update_most_recent_bp');
+            $this->emitTo('record-patient-blood-pressure', 'blood-pressure-updated', $this->patient_blood_pressure['patient_id']);
         }
     }
 

@@ -16,7 +16,7 @@ class RecordPatientBloodPressure extends Component
     public $search_error;
 
     protected $listeners = [
-        'record-blood-pressure' => 'update_most_recent_bp',
+        'blood-pressure-updated' => 'update_most_recent_bp',
     ];
 
     public function patient_search_by_id()
@@ -44,10 +44,11 @@ class RecordPatientBloodPressure extends Component
         sleep(1);
     }
 
-    public function update_most_recent_bp()
+    public function update_most_recent_bp($id)
     {
-        $this->patient_search_results_most_recent_bp = Patient::find($this->patient_id)->blood_pressure;
-        $this->refresh();
+        // ddd($id);
+        $this->patient_search_results_most_recent_bp = Patient::find($id)->blood_pressure;
+        $this->render();
     }
 
     public function render()

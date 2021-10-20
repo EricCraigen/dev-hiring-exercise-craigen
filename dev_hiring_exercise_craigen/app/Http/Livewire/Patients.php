@@ -22,7 +22,8 @@ class Patients extends Component
 
         // return back()->withSuccess('Export started!');
 
-        return (new PatientsExport)->download('patients.csv');
+        // return (new PatientsExport)->download('patients.csv');
+        (new PatientsExport)->store('patients.csv');
     }
 
     public function render()
