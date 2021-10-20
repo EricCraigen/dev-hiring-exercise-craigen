@@ -14,10 +14,12 @@ class Modal extends Component
     ];
 
     public function show() {
+        sleep(1);
         $this->show = true;
     }
 
     public function hide() {
+        sleep(1);
         $this->show = false;
     }
 }

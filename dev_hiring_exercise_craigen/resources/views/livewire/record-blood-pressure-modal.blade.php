@@ -53,7 +53,14 @@
                     </div>
                     <x-button wire:click.prevent="record_patient_blood_pressure"
                               class="block mx-16 mb-5 bg-gray-600 hover:bg-green-500 hover:bg-opacity-80 text-white hover:text-indigo-900 text-xl font-bold justify-center px-3 py-1">
-                        Record Blood Pressure
+                        <div wire:loading
+                             wire:target="record_patient_blood_pressure"
+                        >
+                            <x-loading-blocks />
+                        </div>
+                        <div class="flex items-center justify-center w-full p-2 font-bold text-white text-md" wire:loading.remove wire:target="record_patient_blood_pressure">
+                            Record Blood Pressure
+                        </div>
                     </x-button>
                 </div>
 

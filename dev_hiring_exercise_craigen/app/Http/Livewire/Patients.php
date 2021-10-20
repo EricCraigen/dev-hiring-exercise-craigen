@@ -13,19 +13,16 @@ class Patients extends Component
     public $patients;
     public $current_patient;
 
-    // public function updated($propertyName)
-    // {
-    //     $this->validateOnly($propertyName);
-    // }
-
-    // public function mount()
-    // {
-    //     $this->current_patient = Patient::find(1)->blood_pressure;
-    // }
-
     public function export()
     {
-        return Excel::download(new PatientsExport, 'patients.csv');
+        // (new PatientsExport)->queue('invoices.xlsx')->chain([
+        //     new NotifyUserOfCompletedExport(request()->user()),
+        // // ]);
+        // (new PatientsExport)->queue('patients.csv');
+
+        // return back()->withSuccess('Export started!');
+
+        return (new PatientsExport)->download('patients.csv');
     }
 
     public function render()

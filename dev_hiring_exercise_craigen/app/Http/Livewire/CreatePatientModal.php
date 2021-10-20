@@ -90,7 +90,8 @@ class CreatePatientModal extends Modal
     }
 
     public function create_new_patient()
-    { 
+    {
+        sleep(1);
         $validated_data = $this->validate();
         if ($validated_data) {
             Patient::firstOrCreate($this->new_patient);

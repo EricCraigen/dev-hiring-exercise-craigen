@@ -1,14 +1,14 @@
 <div class="my-10">
     @if($beforeTableSlot)
-        <div class="mt-8 w-full">
+        <div class="mt-8">
             @include($beforeTableSlot)
         </div>
     @endif
     <div class="relative">
         <div class="flex justify-between items-center mb-1">
-            <div class="h-10 flex items-center">
+            <div class="h-10 flex items-center w-full">
                 @if($this->searchableColumns()->count())
-                <div class="w-96 flex rounded-lg shadow-sm">
+                <div class="flex rounded-lg shadow-sm w-full">
                     <div class="relative flex-grow focus-within:z-10">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" stroke="currentColor" fill="none">
