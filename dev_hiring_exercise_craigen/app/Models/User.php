@@ -18,9 +18,27 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'middle_name',
+        'last_name',
+        'user_name',
         'email',
         'password',
+        'role_id',
+        'organization_id',
+        'user_config',
+        'settings_config',
+        'street_address_1',
+        'street_address_2',
+        'apt_number',
+        'city',
+        'state',
+        'postal_code',
+        'country',
+        'current_team_id',
+        'profile_photo_path',
+        'two_factor_secret',
+        'two_factor_recovery_codes',
     ];
 
     /**
@@ -30,6 +48,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
+        // 'is_admin',
         'remember_token',
     ];
 
@@ -41,4 +60,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
 }

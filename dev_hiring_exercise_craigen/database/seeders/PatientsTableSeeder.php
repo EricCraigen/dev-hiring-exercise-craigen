@@ -18,7 +18,7 @@ class PatientsTableSeeder extends Seeder
         $faker = Factory::create();
         $data = [];
 
-        for ($patient_ctr = 0; $patient_ctr < 50000; $patient_ctr++) {
+        for ($patient_ctr = 0; $patient_ctr < 5000; $patient_ctr++) {
             $data[] = [
                 'first_name' => $faker->firstName(),
                 'middle_name' => $faker->firstName(),
