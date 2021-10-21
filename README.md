@@ -3,7 +3,9 @@
 
 Pull repository.
 Make a new .env file and set up for development.
-Run composer update, npm install, and artisan key:generate.
+Run composer update, npm install, and artisan key:generate, artisan migrate:fresh --seed.
+
+The queue and session drivers need to be set to database within the .env file.
 
 Environment Notes:
 
