@@ -1,5 +1,5 @@
 <!-- Profile dropdown -->
-<div x-data="{profile_dropdown: false}" class="ml-3 relative">
+<div x-data="{profile_dropdown: false}" class="ml-3 relative z-10">
 
     <div>
 
@@ -43,9 +43,9 @@
             Record Patients Blood Pressure
         </a>
 
-        {{-- <a href="/dashboard/user/settings" class="{{ Route::currentRouteName() == 'user.settings' ? 'bg-gray-200' : 'hover:bg-gray-100' }} block px-3 py-2 mx-1 my-1 text-sm text-gray-700 rounded-sm" role="menuitem" tabindex="-1" id="user-menu-item-1">
-            Account Settings
-        </a> --}}
+        <a href="{{ route('edit-user') }}" class="{{ Route::currentRouteName() == 'edit-user' ? 'bg-gray-200' : 'hover:bg-gray-100' }} block px-3 py-2 mx-1 my-1 text-sm text-gray-700 rounded-sm" role="menuitem" tabindex="1" id="user-menu-item-2">
+            Edit Current Role
+        </a>
 
         @auth
 

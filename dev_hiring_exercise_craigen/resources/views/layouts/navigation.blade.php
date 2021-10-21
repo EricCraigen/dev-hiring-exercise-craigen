@@ -11,12 +11,14 @@
                             <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                                 {{ __('Welcome') }}
                             </x-nav-link>
-                            <x-nav-link :href="route('patients')" :active="request()->routeIs('patients')">
-                                {{ __('Patients') }}
-                            </x-nav-link>
-                            <x-nav-link :href="route('record-blood-pressure')" :active="request()->routeIs('record-blood-pressure')">
-                                {{ __('Record Patients Blood Pressure') }}
-                            </x-nav-link>
+                            @auth
+                                <x-nav-link :href="route('patients')" :active="request()->routeIs('patients')">
+                                    {{ __('Patients') }}
+                                </x-nav-link>
+                                <x-nav-link :href="route('record-blood-pressure')" :active="request()->routeIs('record-blood-pressure')">
+                                    {{ __('Record Patients Blood Pressure') }}
+                                </x-nav-link>
+                            @endauth
                         </div>
                     </div>
                 </div>

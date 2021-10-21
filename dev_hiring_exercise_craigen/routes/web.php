@@ -13,6 +13,7 @@ use App\Http\Livewire\Auth\Passwords\Confirm;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Livewire\RecordPatientBloodPressure;
 use App\Http\Controllers\Auth\EmailVerificationController;
+use App\Http\Livewire\EditUser;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,3 +64,5 @@ Route::get('/', Welcome::class)->name('home');
 Route::get('/patients', Patients::class)->name('patients');
 
 Route::get('/record-blood-pressure', RecordPatientBloodPressure::class)->name('record-blood-pressure');
+
+Route::get('/edit-user', EditUser::class)->name('edit-user');

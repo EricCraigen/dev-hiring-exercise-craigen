@@ -424,13 +424,13 @@
                 </div>
 
                 <x-button wire:click.prevent="create_new_patient"
-                          class="block mx-16 mb-5 bg-gray-600 hover:bg-green-500 hover:bg-opacity-80 text-white hover:text-indigo-900 text-xl font-bold justify-center px-3 py-1">
+                          class="block mx-16 mb-5 bg-indigo-900 hover:bg-green-500 hover:bg-opacity-80 text-green-500 hover:text-indigo-900 text-xl font-bold text-xl font-bold justify-center px-3 py-1">
                     <div wire:loading
                          wire:target="create_new_patient"
                     >
                         <x-loading-blocks />
                     </div>
-                    <div class="flex items-center justify-center w-full p-2 font-bold text-white text-md" wire:loading.remove wire:target="create_new_patient">
+                    <div class="flex items-center justify-center w-full text-green-500 hover:text-indigo-900 text-xl font-bold" wire:loading.remove wire:target="create_new_patient">
                         Create Patient
                     </div>
                 </x-button>

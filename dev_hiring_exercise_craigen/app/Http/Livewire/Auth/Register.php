@@ -14,7 +14,7 @@ class Register extends Component
 {
     public $first_name = '';
     public $last_name = '';
-    public $user_name = '';
+    // public $user_name = '';
     public $email = '';
     public $password = '';
     public $passwordConfirmation = '';
@@ -31,7 +31,7 @@ class Register extends Component
         $this->validate([
             'first_name' => ['required'],
             'last_name' => ['required'],
-            'user_name' => ['required', 'unique:users'],
+            // 'user_name' => ['required', 'unique:users'],
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'min:8', 'same:passwordConfirmation', 'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/'],
         ]);
@@ -42,10 +42,10 @@ class Register extends Component
         $user = User::create([
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
-            'user_name' => $this->user_name,
+            // 'user_name' => $this->user_name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
-            'is_admin' => true,
+            'role_id' => 2,
         ]);
         // $user->roles()->attach($this->role->getId());
 

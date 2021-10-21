@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 class CreatePatientModal extends Modal
 {
     public $new_patient;
+    public $patient_to_add;
     public $state_abbrevs_names;
     protected $rules;
 
@@ -92,11 +93,12 @@ class CreatePatientModal extends Modal
 
     public function create_new_patient()
     {
-        $this->new_patient['soc_sec_no'] = Hash::make($this->new_patient['soc_sec_no']);
+        $patient_to_add = $this->new_patient;
+        $patient_to_add['soc_sec_no'] = Hash::make($patient_to_add['soc_sec_no']);
         sleep(1);
         $validated_data = $this->validate();
         if ($validated_data) {
-            Patient::firstOrCreate($this->new_patient);
+            Patient::firstOrCreate($patient_to_add);
             sleep(1);
             $this->show = false;
         }

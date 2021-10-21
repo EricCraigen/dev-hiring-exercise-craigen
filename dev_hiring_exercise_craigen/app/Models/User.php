@@ -21,13 +21,11 @@ class User extends Authenticatable
         'first_name',
         'middle_name',
         'last_name',
-        'user_name',
         'email',
         'password',
         'role_id',
-        'organization_id',
-        'user_config',
-        'settings_config',
+        'has_export',
+        'export_file_tag',
         'street_address_1',
         'street_address_2',
         'apt_number',
@@ -35,10 +33,6 @@ class User extends Authenticatable
         'state',
         'postal_code',
         'country',
-        'current_team_id',
-        'profile_photo_path',
-        'two_factor_secret',
-        'two_factor_recovery_codes',
     ];
 
     /**
@@ -48,7 +42,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        // 'is_admin',
         'remember_token',
     ];
 
@@ -60,6 +53,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function get_is_patient_attribute()
+    {
+        return $this->role_id == 1;
+    }
+
+    public function get_is_administrator_attribute()
+    {
+        return $this->role_id == 2;
+    }
+
+    public function get_is_nurse_attribute()
+    {
+        return $this->role_id == 3;
+    }
 
 
 }

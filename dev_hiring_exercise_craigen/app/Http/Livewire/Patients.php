@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use Carbon\Carbon;
-use App\Models\Patient;
 use Livewire\Component;
 use App\Exports\PatientsExport;
 use Illuminate\Support\Facades\Auth;
@@ -13,52 +12,44 @@ use App\Jobs\NotifyUserOfCompletedExport;
 class Patients extends Component
 {
     public $current_user;
-    public $current_user_has_export;
+    public $user_export_tag;
     public $patients;
     public $current_patient;
+    public $export_requested;
 
     public function mount()
     {
         $this->current_user = Auth::user();
-        $this->current_user_has_export = false;
+    }
+
+    public function set_user_export_tag()
+    {
+        $this->user_export_tag = $this->current_user->last_name.'_'.$this->current_user->id.'_'.now()->format('Y-m-d');
     }
 
     public function export()
     {
-
-
-        if ($this->current_user) {
-            $user_tag = $this->current_user->last_name.$this->current_user->id;
-            $file_name = 'patients'.$user_tag.'.csv';
+        if ($this->current_user ? $this->current_user->role_id == 2 : false) {
+            $this->set_user_export_tag();
+            $file_name = 'patients-'.$this->user_export_tag.'.csv';
+            (new PatientsExport)->queue($file_name, 'public')->chain([
+                new NotifyUserOfCompletedExport($this->current_user),
+            ]);
+            $this->export_requested = true;
         } else {
-            $file_name = 'patients.csv';
+            session()->flash('auth-guard', 'You are not authorized to do this!');
         }
-        $this->current_user_has_export = true;
-
-        // (new PatientsExport)->queue('patients.csv')->chain([
-        //     new NotifyUserOfCompletedExport(request()->user()),
-        // ]);
-        // (new PatientsExport)->queue('patients.csv');
-
-        // return back()->withSuccess('Export started!');
-
-        // return (new PatientsExport)->download('patients.csv');
-        (new PatientsExport)->store($file_name, 'public');
     }
 
     public function download_export()
     {
-        $destination = storage_path('app/public/');
-        $file_name = '';
-        if ($this->current_user) {
-            $user_tag = $this->current_user->last_name.$this->current_user->id;
-            $file_name = 'patients'.$user_tag.'.csv';
-        } else {
-            $file_name = 'patients.csv';
+        if ($this->current_user->role_id == 2) {
+            $destination = storage_path('app/public/');
+            $this->set_user_export_tag();
+            $file_name = 'patients-'.$this->user_export_tag.'.csv';
+            $path_to_file = $destination.$file_name;
+            return response()->download($path_to_file, $file_name);
         }
-        $path_to_file = $destination.$file_name;
-        // $this->current_user_has_export = false;
-        return response()->download($path_to_file, $file_name);
     }
 
     public function render()
