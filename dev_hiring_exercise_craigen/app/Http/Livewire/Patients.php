@@ -13,13 +13,14 @@ use App\Jobs\NotifyUserOfCompletedExport;
 class Patients extends Component
 {
     public $current_user;
+    public $current_user_has_export;
     public $patients;
     public $current_patient;
 
     public function mount()
     {
         $this->current_user = Auth::user();
-        // ddd($this->current_user);
+        $this->current_user_has_export = false;
     }
 
     public function export()
@@ -28,10 +29,11 @@ class Patients extends Component
 
         if ($this->current_user) {
             $user_tag = $this->current_user->last_name.$this->current_user->id;
-            $file_name = 'patients'.$user_tag.'csv';
+            $file_name = 'patients'.$user_tag.'.csv';
         } else {
             $file_name = 'patients.csv';
         }
+        $this->current_user_has_export = true;
 
         // (new PatientsExport)->queue('patients.csv')->chain([
         //     new NotifyUserOfCompletedExport(request()->user()),
@@ -47,9 +49,16 @@ class Patients extends Component
     public function download_export()
     {
         $destination = storage_path('app/public/');
-        $file_name = 'patients.csv';
+        $file_name = '';
+        if ($this->current_user) {
+            $user_tag = $this->current_user->last_name.$this->current_user->id;
+            $file_name = 'patients'.$user_tag.'.csv';
+        } else {
+            $file_name = 'patients.csv';
+        }
         $path_to_file = $destination.$file_name;
-        return response()->download($path_to_file, 'patients.csv');
+        // $this->current_user_has_export = false;
+        return response()->download($path_to_file, $file_name);
     }
 
     public function render()

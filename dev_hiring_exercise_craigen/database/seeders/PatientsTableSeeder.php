@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Faker\Factory;
 use App\Models\Patient;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class PatientsTableSeeder extends Seeder
 {
@@ -32,6 +33,7 @@ class PatientsTableSeeder extends Seeder
                 'employment_status' => $faker->randomElement($array = array ('Full Time','Part Time','Student','Un-Employeed')),
                 'contact_by' => $faker->randomElement($array = array ('Primary Phone','Secondary Phone','Email')),
                 'soc_sec_no' => 'XXX-XX-XXXX',
+                // 'soc_sec_no' => Hash::make('3333333333'),  Hashing decreases perfomrance greatly 200 records = 14 secs with hash
                 'referred_by' => $faker->randomElement($array = array ('In house','Specialist','Other')),
                 'email' => $faker->unique()->safeEmail(),
                 'street_address_1' => $faker->streetAddress(),
