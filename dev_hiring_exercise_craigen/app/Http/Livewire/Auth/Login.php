@@ -9,8 +9,8 @@ use Livewire\Component;
 class Login extends Component
 {
     /** @var string */
-    public $user_name = '';
-    // public $email = '';
+    // public $user_name = '';
+    public $email = '';
 
     /** @var string */
     public $password = '';
@@ -35,7 +35,7 @@ class Login extends Component
             return;
         }
 
-        return redirect()->intended(route('dashboard'));
+        return redirect()->intended(route('home'));
     }
 
     public function render()

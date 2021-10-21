@@ -41,13 +41,13 @@
             @endif
 
             <x-button wire:click.prevent="{{ !$toggle_search_param ? 'patient_search_by_id' : 'patient_search_by_last_name' }}"
-                      class="block bg-gray-600 hover:bg-green-500 hover:bg-opacity-80 text-white hover:text-indigo-900 text-xl font-bold justify-center px-3 py-1">
+                      class="block bg-gray-600 hover:bg-green-500 hover:bg-opacity-80 text-green-500 hover:text-indigo-900 text-xl font-bold justify-center px-3 py-1">
                 <div wire:loading
                      wire:target="{{ !$toggle_search_param ? 'patient_search_by_id' : 'patient_search_by_last_name' }}"
                 >
                     <x-loading-blocks />
                 </div>
-                <div class="flex items-center justify-center w-full p-2 font-bold text-white text-md" wire:loading.remove wire:target="{{ !$toggle_search_param ? 'patient_search_by_id' : 'patient_search_by_last_name' }}">
+                <div class="flex items-center justify-center w-full text-green-500 hover:text-indigo-900 text-xl font-bold" wire:loading.remove wire:target="{{ !$toggle_search_param ? 'patient_search_by_id' : 'patient_search_by_last_name' }}">
                     Find Patient
                 </div>
             </x-button>

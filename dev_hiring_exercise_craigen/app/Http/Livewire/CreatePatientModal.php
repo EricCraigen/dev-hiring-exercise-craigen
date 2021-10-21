@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Patient;
 use Livewire\Component;
 use App\Http\Livewire\Modal;
+use Illuminate\Support\Facades\Hash;
 
 class CreatePatientModal extends Modal
 {
@@ -91,6 +92,7 @@ class CreatePatientModal extends Modal
 
     public function create_new_patient()
     {
+        $this->new_patient['soc_sec_no'] = Hash::make($this->new_patient['soc_sec_no']);
         sleep(1);
         $validated_data = $this->validate();
         if ($validated_data) {

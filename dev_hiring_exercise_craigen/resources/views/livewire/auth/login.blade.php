@@ -90,7 +90,7 @@
 
                     <form wire:submit.prevent="authenticate">
 
-                        <div>
+                        {{-- <div>
 
                             <label for="user_name" class="block text-sm font-medium text-gray-700 leading-5">
                                 Username
@@ -104,9 +104,9 @@
                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                             @enderror
 
-                        </div>
+                        </div> --}}
 
-                        {{-- <div>
+                        <div>
 
                             <label for="email" class="block text-sm font-medium text-gray-700 leading-5">
                                 Email address
@@ -120,7 +120,7 @@
                                 <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                             @enderror
 
-                        </div> --}}
+                        </div>
 
                         <div class="mt-6">
 
