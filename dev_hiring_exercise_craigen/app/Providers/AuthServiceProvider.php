@@ -26,15 +26,15 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('export-patients', function ($user) {
-            return $user->is_admin;
+            return $user->role_id == 2;
         });
 
         Gate::define('create-patients', function ($user) {
-            return $user->is_admin;
+            return $user->role_id == 2 || $user->role_id == 3;
         });
 
         Gate::define('record-patient-blood-pressure', function ($user) {
-            return $user->is_admin || $user->is_nurse;
+            return $user->role_id == 2 || $user->role_id == 3;
         });
     }
 }

@@ -14,7 +14,7 @@ return [
         | Here you can specify how big the chunk should be.
         |
         */
-         
+         'chunk-size' => 5000,
 
         /*
         |--------------------------------------------------------------------------

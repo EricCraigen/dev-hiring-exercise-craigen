@@ -46,16 +46,14 @@ class RecordPatientBloodPressure extends Component
 
     public function update_most_recent_bp($id)
     {
-        // ddd($id);
         $this->patient_search_results_most_recent_bp = Patient::find($id)->blood_pressure;
         $this->render();
     }
 
     public function render()
     {
-
         view()->share('title', 'Record Patient Blood Pressure');
-        view()->share('header', 'A simple form allowing you to record a patients\' blood pressure');
+        view()->share('header', 'Search for and record a patients\' blood pressure');
 
         return view('livewire.record-patient-blood-pressure')->layout('layouts.app');
     }

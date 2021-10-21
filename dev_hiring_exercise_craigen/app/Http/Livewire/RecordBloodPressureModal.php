@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
 use App\Http\Livewire\Modal;
 use App\Models\BloodPressure;
 use App\Models\Patient;

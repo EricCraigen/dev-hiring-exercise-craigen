@@ -2,12 +2,10 @@
 
 namespace App\Http\Livewire;
 
-use Carbon\Carbon;
 use Livewire\Component;
 use App\Exports\PatientsExport;
+use App\Jobs\ExportReady;
 use Illuminate\Support\Facades\Auth;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Jobs\NotifyUserOfCompletedExport;
 
 class Patients extends Component
 {
@@ -33,7 +31,7 @@ class Patients extends Component
             $this->set_user_export_tag();
             $file_name = 'patients-'.$this->user_export_tag.'.csv';
             (new PatientsExport)->queue($file_name, 'public')->chain([
-                new NotifyUserOfCompletedExport($this->current_user),
+                new ExportReady($this->current_user),
             ]);
             $this->export_requested = true;
         } else {
@@ -55,7 +53,7 @@ class Patients extends Component
     public function render()
     {
         view()->share('title', 'Patients');
-        view()->share('header', 'Datatable With 50k fake patient records.');
+        view()->share('header', 'Patients\' Datatable');
 
         return view('livewire.patients')->layout('layouts.app');
     }

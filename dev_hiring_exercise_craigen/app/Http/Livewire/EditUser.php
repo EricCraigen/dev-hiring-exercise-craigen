@@ -18,7 +18,6 @@ class EditUser extends Component
         $this->current_user = Auth::user();
         $this->roles = Role::all();
         $this->current_role = Auth::check() ? $this->current_user->role_id : 1;
-        // ddd($this->current_role);
     }
 
     public function edit_user_role()

@@ -8,7 +8,6 @@ class Welcome extends Component
 {
     public function render()
     {
-
         view()->share('title', 'Welcome');
         view()->share('header', 'Dev Hiring Exercise - Craigen');
 

@@ -18,13 +18,13 @@ class EmitEventsTest extends TestCase
     /** @test  */
     function modal_show_can_be_toggled()
     {
-        // Livewire::test(CreatePatientModal::class)
-        //     ->toggle('show')
-        //     ->assertSet('show', true);
+        Livewire::test(CreatePatientModal::class)
+            ->toggle('show')
+            ->assertSet('show', true);
 
-        // Livewire::test(RecordBloodPressureModal::class)
-        //     ->toggle('show')
-        //     ->assertSet('show', true);
+        Livewire::test(RecordBloodPressureModal::class)
+            ->toggle('show')
+            ->assertSet('show', true);
 
         Livewire::test(Modal::class)
             ->emit('show_modal')

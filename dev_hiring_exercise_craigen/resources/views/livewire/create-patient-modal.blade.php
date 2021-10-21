@@ -1,22 +1,17 @@
 <div>
     <x-modal wire:model="show">
-
         <div class="py-5 bg-indigo-400 rounded-2xl">
 
             <h1 class="w-full text-xl text-gray-900 font-bold capitalize mt-5 p-5">
                 Create a new patient record
             </h1>
-
             <form wire:submit.prevent="create_new_patient"
               method="post"
               class="flex flex-col w-full gap-5">
-
             <h4 class="w-full text-md md:text-xl text-gray-900 font-bold capitalize px-10">
                 Personal Information
             </h4>
-
                 <div class="flex flex-col md:flex-row w-full gap-4 px-16">
-
                     <div class="flex flex-col w-full">
                         <x-input wire:model="new_patient.first_name"
                                  class="w-full px-5 py-3 border border-blue-700 @error('new_patient.first_name') is-invalid @enderror"
@@ -33,7 +28,6 @@
                             </div>
                         @enderror
                     </div>
-
                     <div class="flex flex-col w-full">
                         <x-input wire:model="new_patient.middle_name"
                                  class="w-full px-5 py-3 border border-blue-700 @error('new_patient.middle_name') is-invalid @enderror"
@@ -50,7 +44,6 @@
                             </div>
                         @enderror
                     </div>
-
                     <div class="flex flex-col w-full">
                         <x-input wire:model="new_patient.last_name"
                                  class="w-full px-5 py-3 border border-blue-700 @error('new_patient.last_name') is-invalid @enderror"
@@ -67,9 +60,7 @@
                             </div>
                         @enderror
                     </div>
-
                 </div>
-
                 <div class="flex flex-col md:flex-row w-full gap-4 px-16">
                     <div class="flex flex-col w-full">
                         <x-input wire:model="new_patient.date_of_birth"
@@ -86,7 +77,6 @@
                             </div>
                         @enderror
                     </div>
-
                     <div class="flex flex-col w-full">
                         <select class="w-full px-5 py-3 border border-blue-700 @error('new_patient.gender') is-invalid @enderror rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 wire:model="new_patient.gender"
@@ -103,7 +93,6 @@
                             </div>
                         @enderror
                     </div>
-
                     <div class="flex flex-col w-full">
                         <select class="w-full px-5 py-3 border border-blue-700 @error('new_patient.status') is-invalid @enderror rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 wire:model="new_patient.status"
@@ -120,11 +109,8 @@
                             </div>
                         @enderror
                     </div>
-
                 </div>
-
                 <div class="flex flex-col md:flex-row w-full gap-4 px-16">
-
                     <div class="flex flex-col w-full md:w-1/3">
                         <select class="w-full px-5 py-3 border border-blue-700 @error('new_patient.marital_status') is-invalid @enderror rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 wire:model="new_patient.marital_status"
@@ -144,7 +130,6 @@
                             </div>
                         @enderror
                     </div>
-
                     <div class="flex flex-col w-full md:w-1/3">
                         <x-input wire:model="new_patient.soc_sec_no"
                                  class="w-full px-5 py-3 border border-blue-700 @error('new_patient.soc_sec_no') is-invalid @enderror"
@@ -161,7 +146,6 @@
                             </div>
                         @enderror
                     </div>
-
                     <div class="flex flex-col w-full md:w-1/3">
                         <select class="w-full px-5 py-3 border border-blue-700 @error('new_patient.employment_status') is-invalid @enderror rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 wire:model="new_patient.employment_status"
@@ -180,11 +164,8 @@
                             </div>
                         @enderror
                     </div>
-
                 </div>
-
                 <div class="flex flex-col md:flex-row w-full gap-4 px-16">
-
                     <div class="flex flex-col w-full">
                         <x-input wire:model="new_patient.referred_by"
                                  class="w-full px-5 py-3 border border-blue-700 @error('new_patient.referred_by') is-invalid @enderror"
@@ -201,15 +182,11 @@
                             </div>
                         @enderror
                     </div>
-
                 </div>
-
             <h4 class="w-full text-md md:text-xl text-gray-900 font-bold capitalize px-10">
                 Cultural Information
             </h4>
-
                 <div class="flex flex-col md:flex-row w-full gap-4 px-16">
-
                     <div class="flex flex-col w-full md:w-1/3">
                         <select class="w-full px-5 py-3 border border-blue-700 @error('new_patient.race') is-invalid @enderror rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 wire:model="new_patient.race"
@@ -228,7 +205,6 @@
                             </div>
                         @enderror
                     </div>
-
                     <div class="flex flex-col w-full md:w-1/3">
                         <select class="w-full px-5 py-3 border border-blue-700 @error('new_patient.language') is-invalid @enderror rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                 wire:model="new_patient.language"
@@ -248,13 +224,10 @@
                             </div>
                         @enderror
                     </div>
-
                 </div>
-
             <h4 class="w-full text-md md:text-xl text-gray-900 font-bold capitalize px-10">
                 Contact Information
             </h4>
-
                 <div class="flex flex-col md:flex-row w-full gap-4 px-16">
                     <div class="flex flex-col w-full md:w-1/3">
                         <select class="w-full px-5 py-3 border border-blue-700 @error('new_patient.contact_by') is-invalid @enderror rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -273,7 +246,6 @@
                             </div>
                         @enderror
                     </div>
-
                     <div class="flex flex-col w-full md:w-1/3">
                         <x-input wire:model="new_patient.email"
                                  class="w-full px-5 py-3 border border-blue-700 @error('new_patient.email') is-invalid @enderror"
@@ -290,11 +262,8 @@
                             </div>
                         @enderror
                     </div>
-
                 </div>
-
                 <div class="flex flex-col md:flex-row w-full gap-4 px-16">
-
                     <div class="flex flex-col w-full md:w-1/3">
                         <x-input wire:model="new_patient.primary_phone"
                                 class="w-full px-5 py-3 border border-blue-700 @error('new_patient.primary_phone') is-invalid @enderror"
@@ -311,7 +280,6 @@
                             </div>
                         @enderror
                     </div>
-
                     <div class="flex flex-col w-full md:w-1/3">
                         <x-input wire:model="new_patient.secondary_phone"
                                 class="w-full px-5 py-3 border border-blue-700"
@@ -323,15 +291,11 @@
                         >
                         </x-input>
                     </div>
-
                 </div>
-
             <h4 class="w-full text-md md:text-xl text-gray-900 font-bold capitalize px-10">
                 Address
             </h4>
-
                 <div class="flex flex-col md:flex-row w-full gap-4 px-16">
-
                     <div class="flex flex-col w-full">
                         <x-input wire:model="new_patient.street_address_1"
                                  class="w-full px-5 py-3 border border-blue-700 @error('new_patient.street_address_1') is-invalid @enderror"
@@ -348,7 +312,6 @@
                             </div>
                         @enderror
                     </div>
-
                     <div class="flex flex-col w-full">
                         <x-input wire:model="new_patient.street_address_2"
                                 class="w-full px-5 py-3 border border-blue-700"
@@ -360,11 +323,8 @@
                         >
                         </x-input>
                     </div>
-
                 </div>
-
                 <div class="flex flex-col md:flex-row w-full gap-4 px-16">
-
                     <div class="flex flex-col w-full md:w-1/2">
                         <x-input wire:model="new_patient.city"
                                  class="w-full px-5 py-3 border border-blue-700 @error('new_patient.city') is-invalid @enderror"
@@ -381,9 +341,7 @@
                             </div>
                         @enderror
                     </div>
-
                     <div class="flex w-full md:w-1/2 gap-4">
-
                         <div class="flex flex-col w-full">
                             <select class="w-full px-5 py-3 border border-blue-700 @error('new_patient.state') is-invalid @enderror rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                     wire:model="new_patient.state"
@@ -401,7 +359,6 @@
                                 </div>
                             @enderror
                         </div>
-
                         <div class="flex flex-col w-full md:w-1/2">
                             <x-input wire:model="new_patient.postal_code"
                                      class="w-full px-5 py-3 border border-blue-700 @error('new_patient.postal_code') is-invalid @enderror"
@@ -418,11 +375,8 @@
                                 </div>
                             @enderror
                         </div>
-
                     </div>
-
                 </div>
-
                 <x-button wire:click.prevent="create_new_patient"
                           class="block mx-16 mb-5 bg-indigo-900 hover:bg-green-500 hover:bg-opacity-80 text-green-500 hover:text-indigo-900 text-xl font-bold text-xl font-bold justify-center px-3 py-1">
                     <div wire:loading
@@ -434,10 +388,7 @@
                         Create Patient
                     </div>
                 </x-button>
-
             </form>
-
         </div>
-
     </x-modal>
 </div>

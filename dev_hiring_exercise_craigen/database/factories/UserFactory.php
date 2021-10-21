@@ -3,8 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\User;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class UserFactory extends Factory
 {
@@ -21,12 +22,24 @@ class UserFactory extends Factory
      * @return array
      */
     public function definition()
-    { 
+    {
         return [
-            'name' => $this->faker->name(),
+            'first_name' => $this->faker->firstName(),
+            'middle_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
             'email' => $this->faker->unique()->safeEmail(),
+            'password' => Hash::make('password'),
+            'role_id' => 1,
+            'has_export' => 0,
+            'export_file_tag' => null,
+            'street_address_1' => $this->faker->streetAddress(),
+            'street_address_2' => $this->faker->buildingNumber(),
+            'apt_number' => $this->faker->secondaryAddress(),
+            'city' => $this->faker->city(),
+            'state' => $this->faker->state(),
+            'postal_code' => $this->faker->postcode(),
+            'country' => $this->faker->country(),
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ];
     }

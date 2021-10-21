@@ -13,7 +13,7 @@
         </p>
         <p class="text-gray-900 text-lg font-semibold mt-5 mx-10">
             I will say up front that this is the first test I have taken and I hope that I have hit the proverbial nail on the head. I am not please with how long the seeding
-            takes with 50k records (at around 47secs on my MacBook Pro M1), but this is acceptable to me given I have also never done this before this test.
+            takes with 50k records (at around <span class="line-through">47secs</span> 18secs on my MacBook Pro M1), but this is acceptable to me given I have also never done this before this test.
         </p>
         <p class="text-gray-900 text-lg font-semibold mt-5 mx-10">
             The only other issue I have with my application is that the CSV export takes much too long in my opinion (at about an hour on my fastest run while testing different cache settings for the excel package).

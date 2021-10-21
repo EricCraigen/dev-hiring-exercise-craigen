@@ -57,12 +57,14 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', LogoutController::class)
         ->name('logout');
+
+    Route::get('/patients', Patients::class)->name('patients');
+
+    Route::get('/record-blood-pressure', RecordPatientBloodPressure::class)->name('record-blood-pressure');
+
+    Route::get('/edit-user', EditUser::class)->name('edit-user');
 });
 
 Route::get('/', Welcome::class)->name('home');
 
-Route::get('/patients', Patients::class)->name('patients');
 
-Route::get('/record-blood-pressure', RecordPatientBloodPressure::class)->name('record-blood-pressure');
-
-Route::get('/edit-user', EditUser::class)->name('edit-user');

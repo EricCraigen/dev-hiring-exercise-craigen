@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use Carbon\Carbon;
 use App\Models\Patient;
-use Livewire\Component;
 use App\Http\Livewire\Modal;
 use Illuminate\Support\Facades\Hash;
 
@@ -42,7 +41,6 @@ class CreatePatientModal extends Modal
         'new_patient.language.required' => 'Laguange field is required.',
         'new_patient.contact_by.required' => 'Contact By field is required.',
         'new_patient.email.required' => 'Email field is required.',
-        // 'new_patient.email.unique' => 'Email has already been.',
         'new_patient.primary_phone.required' => 'Primary Phone field is required.',
         'new_patient.primary_phone.regex' => 'Please enter a valid phone number.',
         'new_patient.street_address_1.required' => 'Street Address 1 field is required.',
@@ -99,10 +97,8 @@ class CreatePatientModal extends Modal
         $validated_data = $this->validate();
         if ($validated_data) {
             Patient::firstOrCreate($patient_to_add);
-            sleep(1);
             $this->show = false;
         }
-
     }
 
     private function clear_new_patient()
